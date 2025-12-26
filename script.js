@@ -161,7 +161,7 @@ $(document).ready(function() {
                         <div class="expense-info">
                             <div class="expense-title">
                                 ${expense.title}
-                                <span class="category-badge" style="background: #e0e7ff; color: #4f46e5;">${expense.category}</span>
+                                <span class="category-badge">${expense.category}</span>
                             </div>
                             <div class="expense-date"><i class="far fa-calendar"></i> ${formattedDate}</div>
                         </div>
@@ -202,8 +202,8 @@ $(document).ready(function() {
                 datasets: [{
                     label: 'Monthly Expenses ($)',
                     data: monthlyData,
-                    backgroundColor: 'rgba(99, 102, 241, 0.7)',
-                    borderColor: 'rgba(99, 102, 241, 1)',
+                    backgroundColor: 'rgba(16, 185, 129, 0.6)',
+                    borderColor: 'rgba(16, 185, 129, 1)',
                     borderWidth: 2,
                     borderRadius: 8
                 }]
@@ -222,7 +222,19 @@ $(document).ready(function() {
                         ticks: {
                             callback: function(value) {
                                 return '$' + value.toFixed(0);
-                            }
+                            },
+                            color: '#10b981'
+                        },
+                        grid: {
+                            color: 'rgba(16, 185, 129, 0.1)'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#10b981'
+                        },
+                        grid: {
+                            color: 'rgba(16, 185, 129, 0.1)'
                         }
                     }
                 }
