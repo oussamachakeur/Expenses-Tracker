@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Expense Tracker</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container main-container">
+        <div class="header">
+            <h1><i class="fas fa-wallet"></i> Daily Expense Tracker</h1>
+            <p class="lead">Manage your expenses efficiently</p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-5 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-plus-circle"></i> Add New Expense
+                    </div>
+                    <div class="card-body">
+                        <form id="expenseForm">
+                            <div class="mb-3">
+                                <label class="form-label">Expense Title *</label>
+                                <input type="text" class="form-control" id="expenseTitle"
+                                    placeholder="e.g., Grocery Shopping" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Category *</label>
+                                <select class="form-select" id="expenseCategory" required>
+                                    <option value="">Select Category</option>
+                                    <option value="Food">🍔 Food</option>
+                                    <option value="Transport">🚗 Transport</option>
+                                    <option value="Shopping">🛍️ Shopping</option>
+                                    <option value="Entertainment">🎬 Entertainment</option>
+                                    <option value="Bills">💡 Bills</option>
+                                    <option value="Health">⚕️ Health</option>
+                                    <option value="Other">📌 Other</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Amount ($) *</label>
+                                <input type="number" class="form-control" id="expenseAmount" placeholder="0.00"
+                                    step="0.01" min="0.01" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Date *</label>
+                                <input type="date" class="form-control" id="expenseDate" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="fas fa-save"></i> Add Expense
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="stats-card">
+                    <h4>Total Expenses (All Time)</h4>
+                    <h2 id="totalAllTime">$0.00</h2>
+                </div>
+            </div>
+
+            <div class="col-lg-7">
+                <div class="filter-section">
+                    <div class="row align-items-center">
+                        <div class="col-md-3 mb-3">
+                            <label class="form-label">Filter by Year</label>
+                            <select class="form-select" id="yearFilter">
+                                <option value="2024">2024</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="form-label">Filter by Month</label>
+                            <select class="form-select" id="monthFilter">
+                                <option value="all">All Months</option>
+                                <option value="0">January</option>
+                                <option value="1">February</option>
+                                <option value="2">March</option>
+                                <option value="3">April</option>
+                                <option value="4">May</option>
+                                <option value="5">June</option>
+                                <option value="6">July</option>
+                                <option value="7">August</option>
+                                <option value="8">September</option>
+                                <option value="9">October</option>
+                                <option value="10">November</option>
+                                <option value="11">December</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="form-label">Filter by Day</label>
+                            <select class="form-select" id="dayFilter">
+                                <option value="all">All Days</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="form-label">Sort By</label>
+                            <select class="form-select" id="sortFilter">
+                                <option value="date-desc">Newest First</option>
+                                <option value="date-asc">Oldest First</option>
+                                <option value="amount-desc">Highest Amount</option>
+                                <option value="amount-asc">Lowest Amount</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="total-summary">
+                    <div>Total Expenses for <span id="selectedPeriod">2024</span></div>
+                    <h3 id="totalAmount">$0.00</h3>
+                    <div><span id="expenseCount">0</span> transactions</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-chart-bar"></i> Monthly Breakdown
+                    </div>
+                    <div class="card-body">
+                        <canvas id="expenseChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-list"></i> Expense List
+                    </div>
+                    <div class="card-body">
+                        <div id="expenseList"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
